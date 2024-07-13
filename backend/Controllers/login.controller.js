@@ -6,14 +6,7 @@ const login = async (req, res) => {
 
         const { username, password } = req.body
 
-        if (!username || !password)
-            throw Error('Fill All the Fields')
-
-        const user = await UserModel.findOne({ username })
-
-        if (!user) {
-            throw Error('User Not Found')
-        }
+        const user = await UserModel.login(username, password)
 
         res.status(200).json({ user })
 
