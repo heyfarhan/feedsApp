@@ -6,20 +6,20 @@ const Signup = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const [role, setRole] = useState('user')
+    const [isAdmin, setIsAdmin] = useState('false')
 
     const handleClick = (e) => {
 
         e.preventDefault()
 
-        console.log({ username, password, email, phone, role })
+        console.log({ username, password, email, phone, isAdmin })
 
 
         setUsername('');
         setPassword('');
         setEmail('');
         setPhone('');
-        setRole('user');
+        setIsAdmin('false');
 
     }
 
@@ -46,12 +46,12 @@ const Signup = () => {
 
                 <select
                     id="role-select"
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
+                    value={isAdmin}
+                    onChange={(e) => setIsAdmin(e.target.value)}
                     className="border-black border p-2"
                 >
-                    <option className="" value="user">User</option>
-                    <option value="admin">Admin</option>
+                    <option className="" value="false">User</option>
+                    <option value="true">Admin</option>
                 </select>
 
                 <button className="bg-green-800 w-1/2 m-auto p-2 text-white font-medium mt-4" onClick={handleClick}>Sign Up</button>
