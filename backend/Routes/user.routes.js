@@ -1,10 +1,12 @@
 const express = require('express')
 
+
+
+const signup = require('../Controllers/signup.controller')
+
 const router = express.Router()
 
-router.get('/signup', (req, res) => {
-    res.json({ msg: "signup successfull" })
-})
+router.get('/signup', signup)
 
 router.get('/login', (req, res) => {
     res.json({ msg: "login successfull" })
