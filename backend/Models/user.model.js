@@ -68,7 +68,7 @@ UserSchema.statics.login = async function (username, password) {
 }
 
 
-UserSchema.statics.createToken = async function (_id) {
+UserSchema.statics.createToken = function (_id) {
 
     const token = jwt.sign({ _id }, process.env.SECRET, { expiresIn: '1h' })
 

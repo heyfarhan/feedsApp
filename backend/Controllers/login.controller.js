@@ -8,7 +8,9 @@ const login = async (req, res) => {
 
         const user = await UserModel.login(username, password)
 
-        res.status(200).json({ user })
+        const token = UserModel.createToken(user._id)
+
+        res.status(200).json({ user, token })
 
 
     }

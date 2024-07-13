@@ -6,7 +6,10 @@ const signup = async (req, res) => {
     try {
 
         const user = await UserModel.signup(username, password, email, phone, admin);
-        res.status(200).json(user)
+
+        const token = UserModel.createToken(user._id)
+
+        res.status(200).json({ user, token })
 
     }
     catch (err) {
