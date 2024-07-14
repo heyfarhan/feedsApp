@@ -1,8 +1,6 @@
 import { useState } from "react"
 import { useLogin } from '../hooks/useLogin'
 
-
-
 const Login = () => {
 
     const [username, setUsername] = useState('')
@@ -23,7 +21,7 @@ const Login = () => {
 
 
     return (
-        <div className="border-black border-2 h-full w-full p-12 flex justify-center items-center flex-col gap-10">
+        <div className="border-black border-2 h-[75vh] w-full p-8 flex justify-center items-center flex-col gap-10">
             <span className="font-medium text-3xl">Login</span>
             <form onSubmit={handleClick} className="flex flex-col gap-4">
 

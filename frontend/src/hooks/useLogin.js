@@ -25,7 +25,7 @@ export const useLogin = () => {
         }
         if (res.ok) {
 
-            localStorage.setItem('user', { ...json.user })
+            localStorage.setItem('user', JSON.stringify(json.user))
             localStorage.setItem('token', json.token)
 
             dispatch({ type: 'LOGIN', payload: json })
@@ -33,8 +33,6 @@ export const useLogin = () => {
             setError(null)
             setIsLoading(false)
         }
-
-
 
     }
 

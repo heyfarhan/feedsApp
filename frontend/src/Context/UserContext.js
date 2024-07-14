@@ -8,13 +8,11 @@ export const userReducer = (state, action) => {
         case 'LOGIN':
             return { user: action.payload.user, token: action.payload.token }
         case 'LOGOUT':
-            return { user: null }
+            return { user: null, token: null }
         default:
             return state
     }
-
 }
-
 
 export const UserContextProvider = ({ children }) => {
 
@@ -23,10 +21,8 @@ export const UserContextProvider = ({ children }) => {
         token: localStorage.getItem('token') || null
     })
 
-    console.log(state)
-
     return (
-        <UserContext.Provider value={{ ...state, dispatch }}>
+        <UserContext.Provider value={{ state, dispatch }}>
             {children}
         </UserContext.Provider>
     )

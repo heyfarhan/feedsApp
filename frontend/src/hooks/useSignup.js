@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useUserContext } from './useUserContext'
 
-
 export const useSignup = () => {
 
     const [error, setError] = useState(null);
@@ -9,7 +8,6 @@ export const useSignup = () => {
     const { state, dispatch } = useUserContext()
 
     const signup = async (username, password, email, phone, admin) => {
-
 
         setIsLoading(true)
 
@@ -27,7 +25,7 @@ export const useSignup = () => {
         if (res.ok) {
 
             localStorage.setItem('user', { ...json.user })
-            localStorage.setItem('token', token)
+            localStorage.setItem('token', json.token)
 
 
 

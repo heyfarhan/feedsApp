@@ -4,8 +4,6 @@ import { useSignup } from "../hooks/useSignup"
 
 const Signup = () => {
 
-
-
     const { signup, error, isLoading } = useSignup()
 
     const [username, setUsername] = useState('')
@@ -32,7 +30,7 @@ const Signup = () => {
 
     return (
 
-        <div className="border-black border-2 h-full w-full p-12 flex justify-center items-center flex-col gap-10">
+        <div className="border-black border-2 h-[75vh] w-full p-8 flex justify-center items-center flex-col gap-10">
             <span className="font-medium text-3xl">Sign Up</span>
             <form onSubmit={handleClick} className="flex flex-col gap-4">
 
