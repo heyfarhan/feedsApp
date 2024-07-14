@@ -9,7 +9,8 @@ const signup = async (req, res) => {
 
         const token = UserModel.createToken(user._id)
 
-        res.status(200).json({ user, token })
+        res.status(200).json({ user: { username: user.username, email: user.email, phone: user.phone, admin: user.admin }, token })
+
 
     }
     catch (err) {

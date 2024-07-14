@@ -1,22 +1,21 @@
-import { useState } from 'react'
+import { useState } from "react"
 import { useUserContext } from './useUserContext'
 
-
-export const useSignup = () => {
+export const useLogin = () => {
 
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
-    const { state, dispatch } = useUserContext()
+    const { dispatch } = useUserContext()
 
-    const signup = async (username, password, email, phone, admin) => {
+    const login = async (username, password) => {
 
 
         setIsLoading(true)
 
-        const res = await fetch('http://localhost:1234/proxy/api/user/signup', {
+        const res = await fetch('http://localhost:1234/proxy/api/user/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password, email, phone, admin })
+            body: JSON.stringify({ username, password })
         })
         const json = await res.json()
 
@@ -27,11 +26,10 @@ export const useSignup = () => {
         if (res.ok) {
 
             localStorage.setItem('user', { ...json.user })
-            localStorage.setItem('token', token)
-
-
+            localStorage.setItem('token', json.token)
 
             dispatch({ type: 'LOGIN', payload: json })
+
             setError(null)
             setIsLoading(false)
         }
@@ -40,6 +38,6 @@ export const useSignup = () => {
 
     }
 
-    return { signup, error, isLoading }
+    return { login, error, isLoading }
 
 }

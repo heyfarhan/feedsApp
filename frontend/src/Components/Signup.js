@@ -1,6 +1,12 @@
 import { useState } from "react"
+import { useSignup } from "../hooks/useSignup"
+
 
 const Signup = () => {
+
+
+
+    const { signup, error, isLoading } = useSignup()
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -8,11 +14,11 @@ const Signup = () => {
     const [phone, setPhone] = useState('')
     const [isAdmin, setIsAdmin] = useState('false')
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
 
         e.preventDefault()
 
-        console.log({ username, password, email, phone, isAdmin })
+        await signup(username, password, email, phone, isAdmin)
 
 
         setUsername('');

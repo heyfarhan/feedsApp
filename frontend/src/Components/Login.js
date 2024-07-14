@@ -1,16 +1,20 @@
 import { useState } from "react"
-const Login = () => {
+import { useLogin } from '../hooks/useLogin'
 
+
+
+const Login = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleClick = (e) => {
+    const { login, error, isLoading } = useLogin()
+
+    const handleClick = async (e) => {
 
         e.preventDefault()
 
-        console.log({ username, password })
-
+        await login(username, password)
 
         setUsername('');
         setPassword('');
@@ -20,7 +24,7 @@ const Login = () => {
 
     return (
         <div className="border-black border-2 h-full w-full p-12 flex justify-center items-center flex-col gap-10">
-            <span className="font-medium text-3xl">Sign Up</span>
+            <span className="font-medium text-3xl">Login</span>
             <form onSubmit={handleClick} className="flex flex-col gap-4">
 
                 <label className="">Username :</label>
